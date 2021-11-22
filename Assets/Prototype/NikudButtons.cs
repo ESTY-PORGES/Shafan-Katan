@@ -7,6 +7,9 @@ public class NikudButtons : MonoBehaviour
 {
     public Button[] nikud;
     public GameObject[] nikudArrays;
+    public int indexNikudCliced;
+
+
     Dictionary<Button, GameObject> dict = new Dictionary<Button, GameObject>();
     void Start()
     {
@@ -14,24 +17,36 @@ public class NikudButtons : MonoBehaviour
         {
             dict.Add(nikud[i], nikudArrays[i]);
           
-            int back = i;
-            nikud[i].onClick.AddListener(() => buttonCallBack(nikud[back], nikudArrays[back]));
+            int cacheIndex = i;
+            nikud[i].onClick.AddListener(() => buttonCallBack(/*nikud[cacheIndex],*/ nikudArrays[cacheIndex], cacheIndex));
 
         }
     }
 
   
-    public void buttonCallBack(Button nikud, GameObject nikudArray) 
+    public void buttonCallBack(/*Button nikudCliced,*/ GameObject nikudArrayActiv, int index) 
     {
 
         for (int i = 0; i < nikudArrays.Length; i++)
         {
            
             nikudArrays[i].SetActive(false);
-
             
         }
-            nikudArray.SetActive(true);
+
+        nikudArrayActiv.SetActive(true);
+        indexNikudCliced = index;
+
+
+        Debug.Log("index nikud" + index);
+        Debug.Log(nikudArrayActiv);
       
+    }
+
+   
+    public int IndexNikudCliced
+    {
+        get { return indexNikudCliced; }
+       
     }
 }
