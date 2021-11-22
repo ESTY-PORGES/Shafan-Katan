@@ -5,21 +5,29 @@ using UnityEngine.UI;
 
 public class TypeNikudButton : MonoBehaviour
 {
-    public Button[] buttons;
-    public AudioClip[] audioClips;
+    [SerializeField] private Button[] buttons;
+    [SerializeField] private AudioClip[] audioClips;
+
+    
+    private int indexButtonCliced;
+
     private AudioSource audioSource;
-    Dictionary<Button, AudioClip> dict = new Dictionary<Button, AudioClip>();
+    public bool IsClicked;
+
+    private Dictionary<Button, AudioClip> dict = new Dictionary<Button, AudioClip>();
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
+        IsClicked = false;
+
         for (int i = 0; i < buttons.Length; i++)
         {
             dict.Add(buttons[i], audioClips[i]);
 
-            int back = i;
-            buttons[i].onClick.AddListener(() => buttonCallBack(buttons[back], audioClips[back]));
+            int cacheIndex = i;
+            buttons[i].onClick.AddListener(() => buttonCallBack(buttons[cacheIndex], audioClips[cacheIndex], cacheIndex));
 
         }
 
@@ -27,11 +35,25 @@ public class TypeNikudButton : MonoBehaviour
 
     }
 
-    public void buttonCallBack(Button buttons, AudioClip audioClips)
+    private void buttonCallBack(Button buttonCliced, AudioClip audioClipsPlaying, int index)
     {
-        Debug.Log(buttons);
-        audioSource.clip = audioClips;
+
+        Debug.Log(buttonCliced);
+        Debug.Log("index button" + index);
+
+        indexButtonCliced = index;
+        
+        audioSource.clip = audioClipsPlaying;
         audioSource.Play();
+
+        IsClicked = true;
+
+    }
+
+   
+    public int IndexButtonCliced
+    {
+        get { return indexButtonCliced; }
 
     }
 
