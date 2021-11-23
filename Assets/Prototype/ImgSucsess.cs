@@ -53,6 +53,7 @@ public class ImgSucsess : MonoBehaviour
             else
             {
                 letterPress = 0;
+                Debug.Log("sucsess word");
             }
         }
 
