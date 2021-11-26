@@ -75,7 +75,11 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             //Lives -= 1;
-            Debug.Log("Critical hit!");
+          
+           Debug.Log("Critical hit!");
+
+           //How to Create a collision with Particle System???
+          //After 20  collision close door
         }
     }
 }
