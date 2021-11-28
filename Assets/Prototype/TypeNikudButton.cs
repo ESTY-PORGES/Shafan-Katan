@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class TypeNikudButton : MonoBehaviour
 {
     [SerializeField] private Button[] buttons;
-    [SerializeField] private AudioClip[] audioClips;
+    public AudioClip[] audioClips;
 
-    
+
     private int indexButtonCliced;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public bool IsClicked;
 
     private Dictionary<Button, AudioClip> dict = new Dictionary<Button, AudioClip>();
@@ -42,7 +42,7 @@ public class TypeNikudButton : MonoBehaviour
         Debug.Log("index button" + index);
 
         indexButtonCliced = index;
-        
+
         audioSource.clip = audioClipsPlaying;
         audioSource.Play();
 
@@ -50,7 +50,7 @@ public class TypeNikudButton : MonoBehaviour
 
     }
 
-   
+
     public int IndexButtonCliced
     {
         get { return indexButtonCliced; }
