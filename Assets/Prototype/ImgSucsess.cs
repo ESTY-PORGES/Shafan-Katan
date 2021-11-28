@@ -10,20 +10,18 @@ public class ImgSucsess : MonoBehaviour
     public int[] letters;
     public int[] nikud;
 
-    //private Dictionary<int, int> dict = new Dictionary<int, int>();
-
     private int letterPress;
 
     [SerializeField] private TypeNikudButton typeNikudButton;
+
     [SerializeField] private NikudButtons nikudButtons;
+    private ListsInList listsInList;
 
     private void Start()
     {
-        //for (int i = 0; i < letters.Length; i++)
-        //{
-        //    dict.Add(letters[i], nikud[i]);
 
-        //}
+
+        listsInList = GetComponent<ListsInList>();
 
         letterPress = 0;
     }
@@ -61,10 +59,9 @@ public class ImgSucsess : MonoBehaviour
         {
             Debug.Log("Error");
         }
-    }
 
 
+        
 
-
-
+         }
 }

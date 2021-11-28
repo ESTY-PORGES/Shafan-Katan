@@ -13,11 +13,15 @@ public class NikudButtons : MonoBehaviour
     Dictionary<Button, GameObject> dict = new Dictionary<Button, GameObject>();
     void Start()
     {
+
+
         for (int i = 0; i < nikud.Length; i++)
         {
             dict.Add(nikud[i], nikudArrays[i]);
-          
+
+            nikudArrays[i].SetActive(false);
             int cacheIndex = i;
+
             nikud[i].onClick.AddListener(() => buttonCallBack(/*nikud[cacheIndex],*/ nikudArrays[cacheIndex], cacheIndex));
 
         }
@@ -29,18 +33,19 @@ public class NikudButtons : MonoBehaviour
 
         for (int i = 0; i < nikudArrays.Length; i++)
         {
-           
+
             nikudArrays[i].SetActive(false);
-            
+
         }
 
         nikudArrayActiv.SetActive(true);
         indexNikudCliced = index;
-
+        
 
         Debug.Log("index nikud" + index);
         Debug.Log(nikudArrayActiv);
-      
+       
+
     }
 
    
