@@ -15,13 +15,15 @@ public class ImgSucsess : MonoBehaviour
     [SerializeField] private TypeNikudButton typeNikudButton;
 
     [SerializeField] private NikudButtons nikudButtons;
-    private ListsInList listsInList;
+
+    [SerializeField] private GameManager gameManager;
+
+
+    //private ListsInList listsInList;
 
     private void Start()
     {
-
-
-        listsInList = GetComponent<ListsInList>();
+        //listsInList = GetComponent<ListsInList>();
 
         letterPress = 0;
     }
@@ -45,23 +47,55 @@ public class ImgSucsess : MonoBehaviour
             if (letterPress + 2 <= letters.Length)
             {
                 letterPress++;
-
+               
             }
 
             else
             {
                 letterPress = 0;
                 Debug.Log("sucsess word");
+                gameManager.Score += 1;
+
             }
         }
 
         else
         {
             Debug.Log("Error");
+            gameManager.Health--;
         }
 
+        //listsInList.dictWords.dictWord1.letters 
+        //if (letters[letterPress] == typeNikudButton.IndexButtonCliced && nikud[letterPress] == nikudButtons.IndexNikudCliced)
+        //{
+        //    Debug.Log("sucsess");
 
-        
+        //    if (letterPress + 2 <= letters.Length)
+        //    {
+        //        letterPress++;
 
-         }
+        //    }
+
+        //    else
+        //    {
+        //        letterPress = 0;
+        //        Debug.Log("sucsess word");
+        //    }
+        //}
+
+        //else
+        //{
+        //    Debug.Log("Error");
+        //}
+
+
+
+
+    }
+
 }
+
+
+
+
+
